@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en" data-astro-cid-sckkx6r4>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Proyecto sintesis">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/svg+xml" href="/logoScrumManager.svg">
+    <meta name="generator" content="Astro v4.4.6">
+    <title>Dashboard | Scrum Manager</title>
+    <link rel="stylesheet" href="/_astro/chat.CBFDjzKy.css" />
+    <style>
+        .notif[data-astro-cid-mo56jcke] {
+            transform: translate3d(1030.2px, 64.8px, 50px) !important
+        }
+
+        .apps[data-astro-cid-mo56jcke] {
+            transform: translate3d(1160.2px, 64.8px, 50px) !important
+        }
+    </style>
+    <script type="module" src="/_astro/hoisted.DIBE3aqc.js"></script>
+</head>
+
+<body class="bg-zinc-900 overflow-x-hidden no-scrollwidth" data-astro-cid-sckkx6r4>
+    <main class="bg-background"> <!-- drawer component -->
+        <div id="drawer-navigation"
+            class="fixed top-0 left-0 z-40 w-64 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-gray-900"
+            tabindex="-1" aria-labelledby="drawer-navigation-label">
+            <h5 id="drawer-navigation-label" class="text-base font-semibold uppercase text-gray-400">
+                Menu
+            </h5> <button type="button" data-drawer-hide="drawer-navigation" aria-controls="drawer-navigation"
+                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 end-2.5 inline-flex items-center">
+                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                        clip-rule="evenodd"></path>
+                </svg> <span class="sr-only">Cerrar menú</span> </button>
+            <div class="py-4 overflow-y-auto">
+                <ul class="space-y-2 font-medium">
+                    <li> <a href="#" class="flex items-center p-2 rounded-lg text-white hover:bg-gray-600 group"> <svg
+                                class="w-5 h-5 transition duration-75 text-white group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 22 21">
+                                <path
+                                    d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z">
+                                </path>
+                                <path
+                                    d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z">
+                                </path>
+                            </svg> <span class="ms-3">Dashboard</span> </a> </li>
+                    <li> <button type="button"
+                            class="flex items-center w-full p-2 text-base  transition duration-75 rounded-lg group text-white hover:bg-gray-600"
+                            aria-controls="dropdown-example" data-collapse-toggle="dropdown-example"> <svg
+                                class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M3 6c0-1.1.9-2 2-2h5.5a2 2 0 0 1 1.6.7L14 7H3V6Zm0 3v10c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V9H3Z"
+                                    clip-rule="evenodd"></path>
+                            </svg> <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Grupos</span>
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4"></path>
+                            </svg> </button>
+                        <ul id="dropdown-example" class="hidden py-2 space-y-2">
+                            <li> <a href="#"
+                                    class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-600">Grupo
+                                    1</a> </li>
+                            <li> <a href="#"
+                                    class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-600">Grupo
+                                    2</a> </li>
+                            <li> <a href="#"
+                                    class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-600">Grupo
+                                    3</a> </li>
+                        </ul>
+                    </li>
+                    <li> <button type="button"
+                            class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-lg group hover:bg-gray-600"
+                            aria-controls="dropdown-tasks" data-collapse-toggle="dropdown-tasks"> <svg
+                                class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M3 6c0-1.1.9-2 2-2h5.5a2 2 0 0 1 1.6.7L14 7H3V6Zm0 3v10c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V9H3Z"
+                                    clip-rule="evenodd"></path>
+                            </svg> <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Tareas
+                                activas</span> <svg class="w-3 h-3" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4"></path>
+                            </svg> </button>
+                        <ul id="dropdown-tasks" class="hidden py-2 space-y-2">
+                            <li> <a href="#"
+                                    class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-600">Tarea
+                                    1</a> </li>
+                            <li> <a href="#"
+                                    class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-600">Tarea
+                                    2</a> </li>
+                        </ul>
+                    </li>
+                    <li> <a href="#" class="flex items-center p-2 text-white rounded-lg hover:bg-gray-600 group"> <svg
+                                class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path
+                                    d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z">
+                                </path>
+                            </svg> <span class="flex-1 ms-3">Inbox</span> <span
+                                class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">3</span>
+                        </a> </li>
+                    <li> <a href="#" class="flex items-center p-2 text-white rounded-lg hover:bg-gray-600 group"> <svg
+                                class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 20 18">
+                                <path
+                                    d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z">
+                                </path>
+                            </svg> <span class="flex-1 ms-3">Users</span> </a> </li>
+                    <li> <a href="#" class="flex items-center p-2 text-white rounded-lg hover:bg-gray-600 group"> <svg
+                                class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 18 20">
+                                <path
+                                    d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z">
+                                </path>
+                            </svg> <span class="flex-1 ms-3">Products</span> </a> </li>
+                </ul>
+            </div>
+        </div>
+        <div class="px-4 py-4 lg:px-6 lg:pl-4" data-astro-cid-mo56jcke>
+            <div class="flex items-center justify-between" data-astro-cid-mo56jcke>
+                <div class="flex items-center justify-start " data-astro-cid-mo56jcke> <svg
+                        class="w-8 h-8 text-gray-600 cursor-pointer" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation"
+                        aria-controls="drawer-navigation" data-astro-cid-mo56jcke>
+                        <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h10"
+                            data-astro-cid-mo56jcke></path>
+                    </svg> </div>
+                <div class="flex items-center justify-start" data-astro-cid-mo56jcke> <span
+                        class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap text-white"
+                        data-astro-cid-mo56jcke>Scrum Manager</span> </div>
+                <div class="flex items-center" data-astro-cid-mo56jcke>
+                    <div class="hidden mr-3 -mb-1 sm:block" data-astro-cid-mo56jcke> <span
+                            data-astro-cid-mo56jcke></span> </div> <!-- Notifications --> <button type="button"
+                        data-dropdown-toggle="notification-dropdown"
+                        class="p-2 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700"
+                        data-astro-cid-mo56jcke> <span class="sr-only" data-astro-cid-mo56jcke>View notifications</span>
+                        <!-- Bell icon --> <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg" data-astro-cid-mo56jcke>
+                            <path
+                                d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"
+                                data-astro-cid-mo56jcke></path>
+                        </svg><span class="absolute top-9 rounded-full bg-red-700 border-2 border-black h-4 w-4"
+                            data-astro-cid-mo56jcke></span> <!-- NOTIFICACION EN EL BELL ICON --> </button>
+                    <!-- Dropdown menu -->
+                    <div class="[box-shadow:2px_2px_10px_20px_rgba(20,20,20,0.5);] z-50 hidden max-w-sm my-12 overflow-hidden text-base list-none divide-y rounded shadow-lg divide-gray-700 bg-gray-900 notif"
+                        id="notification-dropdown" data-popper-placement="bottom"
+                        style="position: absolute; inset:20px; margin: 10px" data-astro-cid-mo56jcke>
+                        <div class="block px-4 py-2 text-base font-medium text-center bg-gray-900 text-gray-400"
+                            data-astro-cid-mo56jcke>
+                            Notificaciones
+                        </div>
+                        <div> <a href="#" class="flex px-4 py-3 border-b hover:bg-gray-600 border-gray-700">
+                                <div class="flex-shrink-0"> <img class="rounded-full w-11 h-11"
+                                        src="/img/statsIndex.svg" alt="Foto de perfil deJavi"> </div>
+                                <div class="w-full pl-3">
+                                    <div class=" font-normal text-sm mb-1.5 text-gray-400">
+                                        Mensaje nuevo de <span class="font-semibold text-white">Javi</span>: Bienvenido
+                                        a Scrum Manager! </div>
+                                    <div class="text-xs font-medium text-cyan-400"> hace un momento </div>
+                                </div>
+                            </a> </div>
+                        <div> <a href="#" class="flex px-4 py-3 border-b hover:bg-gray-600 border-gray-700">
+                                <div class="flex-shrink-0"> <img class="rounded-full w-11 h-11"
+                                        src="/img/statsIndex2.svg" alt="Foto de perfil deFran"> </div>
+                                <div class="w-full pl-3">
+                                    <div class=" font-normal text-sm mb-1.5 text-gray-400">
+                                        Mensaje nuevo de <span class="font-semibold text-white">Fran</span>: Conoce
+                                        todas nuestras novedades! </div>
+                                    <div class="text-xs font-medium text-cyan-400"> hace un momento </div>
+                                </div>
+                            </a> </div> <a href="#"
+                            class="block py-2 text-base font-normal text-center bg-gray-900 text-white hover:underline hover:bg-gray-600"
+                            data-astro-cid-mo56jcke>
+                            <div class="inline-flex items-center " data-astro-cid-mo56jcke> <svg class="w-5 h-5 mr-2"
+                                    fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
+                                    data-astro-cid-mo56jcke>
+                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" data-astro-cid-mo56jcke></path>
+                                    <path fill-rule="evenodd"
+                                        d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                                        clip-rule="evenodd" data-astro-cid-mo56jcke></path>
+                                </svg>
+                                Ver todo
+                            </div>
+                        </a>
+                    </div> <!-- Apps --> <button type="button" data-dropdown-toggle="apps-dropdown"
+                        class="hidden p-2 text-gray-500 rounded-lg sm:flex hover:text-gray-900 hover:bg-gray-100"
+                        data-astro-cid-mo56jcke> <span class="sr-only" data-astro-cid-mo56jcke>View notifications</span>
+                        <!-- Icon --> <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg" data-astro-cid-mo56jcke>
+                            <path
+                                d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+                                data-astro-cid-mo56jcke></path>
+                        </svg> </button> <!-- Dropdown menu -->
+                    <div class="z-50 hidden max-w-sm my-4 overflow-hidden text-base list-none rounded [box-shadow:2px_2px_10px_20px_rgba(20,20,20,0.5);] bg-gray-900 divide-gray-600 apps"
+                        id="apps-dropdown" data-popper-placement="bottom"
+                        style="position: absolute; inset: 0px auto auto 0px; margin: 0px;" data-astro-cid-mo56jcke>
+                        <div class="block px-4 py-2 text-base font-medium text-center bg-gray-900 text-gray-400 border-b-2 border-gray-600"
+                            data-astro-cid-mo56jcke>
+                            Dashboard
+                        </div>
+                        <div class="grid grid-cols-3 gap-4 p-4" data-astro-cid-mo56jcke> <a href="#"
+                                class="block p-4 text-center rounded-lg hover:bg-gray-600" data-astro-cid-mo56jcke> <svg
+                                    class="mx-auto mb-1 w-7 h-7 text-gray-400" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                    viewBox="0 0 24 24" data-astro-cid-mo56jcke>
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M21 13v-2a1 1 0 0 0-1-1h-.757l-.707-1.707.535-.536a1 1 0 0 0 0-1.414l-1.414-1.414a1 1 0 0 0-1.414 0l-.536.535L14 4.757V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v.757l-1.707.707-.536-.535a1 1 0 0 0-1.414 0L4.929 6.343a1 1 0 0 0 0 1.414l.536.536L4.757 10H4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h.757l.707 1.707-.535.536a1 1 0 0 0 0 1.414l1.414 1.414a1 1 0 0 0 1.414 0l.536-.535 1.707.707V20a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-.757l1.707-.708.536.536a1 1 0 0 0 1.414 0l1.414-1.414a1 1 0 0 0 0-1.414l-.535-.536.707-1.707H20a1 1 0 0 0 1-1Z"
+                                        data-astro-cid-mo56jcke></path>
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+                                        data-astro-cid-mo56jcke></path>
+                                </svg>
+                                <div class="text-sm font-medium text-white" data-astro-cid-mo56jcke>Ajustes</div>
+                            </a> <a href="#" class="block p-4 text-center rounded-lg hover:bg-gray-600"
+                                data-astro-cid-mo56jcke> <svg class="mx-auto mb-1 w-7 h-7 text-gray-400"
+                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    fill="none" viewBox="0 0 24 24" data-astro-cid-mo56jcke>
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M10 6.025A7.5 7.5 0 1 0 17.975 14H10V6.025Z"
+                                        data-astro-cid-mo56jcke></path>
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M13.5 3c-.169 0-.334.014-.5.025V11h7.975c.011-.166.025-.331.025-.5A7.5 7.5 0 0 0 13.5 3Z"
+                                        data-astro-cid-mo56jcke></path>
+                                </svg>
+                                <div class="text-sm font-medium text-white" data-astro-cid-mo56jcke>Scrum</div>
+                            </a> <a href="#" class="block p-4 text-center rounded-lg hover:bg-gray-600"
+                                data-astro-cid-mo56jcke> <svg class="mx-auto mb-1 w-7 h-7 text-gray-400"
+                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    fill="currentColor" viewBox="0 0 24 24" data-astro-cid-mo56jcke>
+                                    <path fill-rule="evenodd"
+                                        d="M3 5.983C3 4.888 3.895 4 5 4h14c1.105 0 2 .888 2 1.983v8.923a1.992 1.992 0 0 1-2 1.983h-6.6l-2.867 2.7c-.955.899-2.533.228-2.533-1.08v-1.62H5c-1.105 0-2-.888-2-1.983V5.983Zm5.706 3.809a1 1 0 1 0-1.412 1.417 1 1 0 1 0 1.412-1.417Zm2.585.002a1 1 0 1 1 .003 1.414 1 1 0 0 1-.003-1.414Zm5.415-.002a1 1 0 1 0-1.412 1.417 1 1 0 1 0 1.412-1.417Z"
+                                        clip-rule="evenodd" data-astro-cid-mo56jcke></path>
+                                </svg>
+                                <div class="text-sm font-medium text-white" data-astro-cid-mo56jcke>Chat</div>
+                            </a> </div>
+                    </div>
+                    <div id="tooltip-toggle" role="tooltip"
+                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip"
+                        data-popper-placement="bottom"
+                        style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(1363.2px, 63.2px, 0px);"
+                        data-astro-cid-mo56jcke>
+                        Toggle dark mode
+                        <div class="tooltip-arrow" data-popper-arrow=""
+                            style="position: absolute; left: 0px; transform: translate3d(68.8px, 0px, 0px);"
+                            data-astro-cid-mo56jcke></div>
+                    </div> <!-- Profile -->
+                    <div class="flex items-center ml-3" data-astro-cid-mo56jcke>
+                        <div data-astro-cid-mo56jcke> <button type="button"
+                                class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                                id="user-menu-button-2" aria-expanded="false" data-dropdown-toggle="dropdown-2"
+                                data-astro-cid-mo56jcke> <span class="sr-only" data-astro-cid-mo56jcke>Open user
+                                    menu</span> <img class="w-8 h-8 rounded-full"
+                                    src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo"
+                                    data-astro-cid-mo56jcke> </button> </div> <!-- Dropdown menu -->
+                        <div class="[box-shadow:2px_2px_10px_20px_rgba(20,20,20,0.5);] z-50 hidden my-4 text-base list-none bg-gray-900 divide-y divide-gray-600 rounded shadow dark:bg-white dark:divide-gray-100 dark:text-gray-900"
+                            id="dropdown-2" data-popper-placement="bottom"
+                            style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(1483.2px, 60.8px, 0px);"
+                            data-astro-cid-mo56jcke>
+                            <div class="px-4 py-3" role="none" data-astro-cid-mo56jcke>
+                                <p class="text-sm text-white" role="none" data-astro-cid-mo56jcke>Neil Sims</p>
+                                <p class="text-sm font-medium text-gray-300 truncate dark:text-gray-900" role="none"
+                                    data-astro-cid-mo56jcke>
+                                    neil.sims@flowbite.com
+                                </p>
+                            </div>
+                            <ul class="py-1" role="none" data-astro-cid-mo56jcke>
+                                <li data-astro-cid-mo56jcke> <a href="#"
+                                        class="block px-4 py-2 text-sm text-white hover:bg-gray-600 dark:text-gray-700 dark:hover:bg-gray-100 dark:hover:text-gray-900"
+                                        role="menuitem" data-astro-cid-mo56jcke>Dashboard</a> </li>
+                                <li data-astro-cid-mo56jcke> <a href="#"
+                                        class="block px-4 py-2 text-sm text-white hover:bg-gray-600 dark:text-gray-700 dark:hover:bg-gray-100 dark:hover:text-gray-900"
+                                        role="menuitem" data-astro-cid-mo56jcke>Settings</a> </li>
+                                <li data-astro-cid-mo56jcke> <a href="#"
+                                        class="block px-4 py-2 text-sm text-white hover:bg-gray-600 dark:text-gray-700 dark:hover:bg-gray-100 dark:hover:text-gray-900"
+                                        role="menuitem" data-astro-cid-mo56jcke>Earnings</a> </li>
+                                <li data-astro-cid-mo56jcke> <a href="#"
+                                        class="block px-4 py-2 text-sm text-white hover:bg-gray-600 dark:text-gray-700 dark:hover:bg-gray-100 dark:hover:text-gray-900"
+                                        role="menuitem" data-astro-cid-mo56jcke>Sign out</a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- drawer component -->
+        <div id="drawer-navigation"
+            class="fixed top-0 left-0 z-40 w-64 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-gray-900"
+            tabindex="-1" aria-labelledby="drawer-navigation-label">
+            <h5 id="drawer-navigation-label" class="text-base font-semibold uppercase text-gray-400">
+                Menu
+            </h5> <button type="button" data-drawer-hide="drawer-navigation" aria-controls="drawer-navigation"
+                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 end-2.5 inline-flex items-center">
+                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                        clip-rule="evenodd"></path>
+                </svg> <span class="sr-only">Cerrar menú</span> </button>
+            <div class="py-4 overflow-y-auto">
+                <ul class="space-y-2 font-medium">
+                    <li> <a href="#" class="flex items-center p-2 rounded-lg text-white hover:bg-gray-600 group"> <svg
+                                class="w-5 h-5 transition duration-75 text-white group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 22 21">
+                                <path
+                                    d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z">
+                                </path>
+                                <path
+                                    d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z">
+                                </path>
+                            </svg> <span class="ms-3">Dashboard</span> </a> </li>
+                    <li> <button type="button"
+                            class="flex items-center w-full p-2 text-base  transition duration-75 rounded-lg group text-white hover:bg-gray-600"
+                            aria-controls="dropdown-example" data-collapse-toggle="dropdown-example"> <svg
+                                class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M3 6c0-1.1.9-2 2-2h5.5a2 2 0 0 1 1.6.7L14 7H3V6Zm0 3v10c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V9H3Z"
+                                    clip-rule="evenodd"></path>
+                            </svg> <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Grupos</span>
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4"></path>
+                            </svg> </button>
+                        <ul id="dropdown-example" class="hidden py-2 space-y-2">
+                            <li> <a href="#"
+                                    class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-600">Grupo
+                                    1</a> </li>
+                            <li> <a href="#"
+                                    class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-600">Grupo
+                                    2</a> </li>
+                            <li> <a href="#"
+                                    class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-600">Grupo
+                                    3</a> </li>
+                        </ul>
+                    </li>
+                    <li> <button type="button"
+                            class="flex items-center w-full p-2 text-base text-white transition duration-75 rounded-lg group hover:bg-gray-600"
+                            aria-controls="dropdown-tasks" data-collapse-toggle="dropdown-tasks"> <svg
+                                class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M3 6c0-1.1.9-2 2-2h5.5a2 2 0 0 1 1.6.7L14 7H3V6Zm0 3v10c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V9H3Z"
+                                    clip-rule="evenodd"></path>
+                            </svg> <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Tareas
+                                activas</span> <svg class="w-3 h-3" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4"></path>
+                            </svg> </button>
+                        <ul id="dropdown-tasks" class="hidden py-2 space-y-2">
+                            <li> <a href="#"
+                                    class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-600">Tarea
+                                    1</a> </li>
+                            <li> <a href="#"
+                                    class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-600">Tarea
+                                    2</a> </li>
+                        </ul>
+                    </li>
+                    <li> <a href="#" class="flex items-center p-2 text-white rounded-lg hover:bg-gray-600 group"> <svg
+                                class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path
+                                    d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z">
+                                </path>
+                            </svg> <span class="flex-1 ms-3">Inbox</span> <span
+                                class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">3</span>
+                        </a> </li>
+                    <li> <a href="#" class="flex items-center p-2 text-white rounded-lg hover:bg-gray-600 group"> <svg
+                                class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 20 18">
+                                <path
+                                    d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z">
+                                </path>
+                            </svg> <span class="flex-1 ms-3">Users</span> </a> </li>
+                    <li> <a href="#" class="flex items-center p-2 text-white rounded-lg hover:bg-gray-600 group"> <svg
+                                class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 18 20">
+                                <path
+                                    d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z">
+                                </path>
+                            </svg> <span class="flex-1 ms-3">Products</span> </a> </li>
+                </ul>
+            </div>
+        </div>
+        <div class=" min-h-screen m-12">
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-16">
+                <table class="min-w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs uppercase bg-gray-700 text-gray-400 border-l-8 border-cyan-500">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 w-2/4
+                ">
+                                Proyectos diarios
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Asignado
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Estado
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Tiempo real
+                            </th>
+                            <th scope="col" class="px-6 py-3"> <span class="sr-only">Edit</span> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            class="bg-gray-900 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 ">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium whitespace-nowrap text-white border-l-8 border-cyan-400">
+                                Crear landing page </th>
+                            <td class="px-6 py-4"> Juan </td>
+                            <td class="px-6 py-4"> En proceso </td>
+                            <td class="px-6 py-4"> 2h </td>
+                            <td class="px-6 py-4 text-right"> <a href="#"
+                                    class="font-medium text-white hover:underline">Edit</a> </td>
+                        </tr>
+                        <tr
+                            class="bg-gray-900 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 ">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium whitespace-nowrap text-white border-l-8 border-cyan-400">
+                                Crear landing page </th>
+                            <td class="px-6 py-4"> Juan </td>
+                            <td class="px-6 py-4"> En proceso </td>
+                            <td class="px-6 py-4"> 2h </td>
+                            <td class="px-6 py-4 text-right"> <a href="#"
+                                    class="font-medium text-white hover:underline">Edit</a> </td>
+                        </tr>
+                        <tr
+                            class="bg-gray-900 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 ">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium whitespace-nowrap text-white border-l-8 border-cyan-400">
+                                Crear back-end </th>
+                            <td class="px-6 py-4"> Pedro </td>
+                            <td class="px-6 py-4"> En proceso </td>
+                            <td class="px-6 py-4"> 4h </td>
+                            <td class="px-6 py-4 text-right"> <a href="#"
+                                    class="font-medium text-white hover:underline">Edit</a> </td>
+                        </tr>
+                        <tr
+                            class="bg-gray-900 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 ">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium whitespace-nowrap text-white border-l-8 border-cyan-400">
+                                Crear dashboard </th>
+                            <td class="px-6 py-4"> Javi </td>
+                            <td class="px-6 py-4"> En proceso </td>
+                            <td class="px-6 py-4"> 2h30m </td>
+                            <td class="px-6 py-4 text-right"> <a href="#"
+                                    class="font-medium text-white hover:underline">Edit</a> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-16">
+                <table class="min-w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs uppercase bg-gray-700 text-gray-400 border-l-8 border-cyan-500">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 w-2/4
+                ">
+                                Proyectos diarios
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Asignado
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Estado
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Tiempo real
+                            </th>
+                            <th scope="col" class="px-6 py-3"> <span class="sr-only">Edit</span> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            class="bg-gray-900 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 ">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium whitespace-nowrap text-white border-l-8 border-cyan-400">
+                                Crear landing page </th>
+                            <td class="px-6 py-4"> Juan </td>
+                            <td class="px-6 py-4"> En proceso </td>
+                            <td class="px-6 py-4"> 2h </td>
+                            <td class="px-6 py-4 text-right"> <a href="#"
+                                    class="font-medium text-white hover:underline">Edit</a> </td>
+                        </tr>
+                        <tr
+                            class="bg-gray-900 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 ">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium whitespace-nowrap text-white border-l-8 border-cyan-400">
+                                Crear landing page </th>
+                            <td class="px-6 py-4"> Juan </td>
+                            <td class="px-6 py-4"> En proceso </td>
+                            <td class="px-6 py-4"> 2h </td>
+                            <td class="px-6 py-4 text-right"> <a href="#"
+                                    class="font-medium text-white hover:underline">Edit</a> </td>
+                        </tr>
+                        <tr
+                            class="bg-gray-900 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 ">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium whitespace-nowrap text-white border-l-8 border-cyan-400">
+                                Crear back-end </th>
+                            <td class="px-6 py-4"> Pedro </td>
+                            <td class="px-6 py-4"> En proceso </td>
+                            <td class="px-6 py-4"> 4h </td>
+                            <td class="px-6 py-4 text-right"> <a href="#"
+                                    class="font-medium text-white hover:underline">Edit</a> </td>
+                        </tr>
+                        <tr
+                            class="bg-gray-900 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 ">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium whitespace-nowrap text-white border-l-8 border-cyan-400">
+                                Crear dashboard </th>
+                            <td class="px-6 py-4"> Javi </td>
+                            <td class="px-6 py-4"> En proceso </td>
+                            <td class="px-6 py-4"> 2h30m </td>
+                            <td class="px-6 py-4 text-right"> <a href="#"
+                                    class="font-medium text-white hover:underline">Edit</a> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-16">
+                <table class="min-w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs uppercase bg-gray-700 text-gray-400 border-l-8 border-cyan-500">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 w-2/4
+                ">
+                                Proyectos diarios
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Asignado
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Estado
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Tiempo real
+                            </th>
+                            <th scope="col" class="px-6 py-3"> <span class="sr-only">Edit</span> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            class="bg-gray-900 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 ">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium whitespace-nowrap text-white border-l-8 border-cyan-400">
+                                Crear landing page </th>
+                            <td class="px-6 py-4"> Juan </td>
+                            <td class="px-6 py-4"> En proceso </td>
+                            <td class="px-6 py-4"> 2h </td>
+                            <td class="px-6 py-4 text-right"> <a href="#"
+                                    class="font-medium text-white hover:underline">Edit</a> </td>
+                        </tr>
+                        <tr
+                            class="bg-gray-900 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 ">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium whitespace-nowrap text-white border-l-8 border-cyan-400">
+                                Crear landing page </th>
+                            <td class="px-6 py-4"> Juan </td>
+                            <td class="px-6 py-4"> En proceso </td>
+                            <td class="px-6 py-4"> 2h </td>
+                            <td class="px-6 py-4 text-right"> <a href="#"
+                                    class="font-medium text-white hover:underline">Edit</a> </td>
+                        </tr>
+                        <tr
+                            class="bg-gray-900 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 ">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium whitespace-nowrap text-white border-l-8 border-cyan-400">
+                                Crear back-end </th>
+                            <td class="px-6 py-4"> Pedro </td>
+                            <td class="px-6 py-4"> En proceso </td>
+                            <td class="px-6 py-4"> 4h </td>
+                            <td class="px-6 py-4 text-right"> <a href="#"
+                                    class="font-medium text-white hover:underline">Edit</a> </td>
+                        </tr>
+                        <tr
+                            class="bg-gray-900 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 ">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium whitespace-nowrap text-white border-l-8 border-cyan-400">
+                                Crear dashboard </th>
+                            <td class="px-6 py-4"> Javi </td>
+                            <td class="px-6 py-4"> En proceso </td>
+                            <td class="px-6 py-4"> 2h30m </td>
+                            <td class="px-6 py-4 text-right"> <a href="#"
+                                    class="font-medium text-white hover:underline">Edit</a> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-16">
+                <table class="min-w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs uppercase bg-gray-700 text-gray-400 border-l-8 border-cyan-500">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 w-2/4
+                ">
+                                Proyectos diarios
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Asignado
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Estado
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Tiempo real
+                            </th>
+                            <th scope="col" class="px-6 py-3"> <span class="sr-only">Edit</span> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            class="bg-gray-900 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 ">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium whitespace-nowrap text-white border-l-8 border-cyan-400">
+                                Crear landing page </th>
+                            <td class="px-6 py-4"> Juan </td>
+                            <td class="px-6 py-4"> En proceso </td>
+                            <td class="px-6 py-4"> 2h </td>
+                            <td class="px-6 py-4 text-right"> <a href="#"
+                                    class="font-medium text-white hover:underline">Edit</a> </td>
+                        </tr>
+                        <tr
+                            class="bg-gray-900 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 ">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium whitespace-nowrap text-white border-l-8 border-cyan-400">
+                                Crear landing page </th>
+                            <td class="px-6 py-4"> Juan </td>
+                            <td class="px-6 py-4"> En proceso </td>
+                            <td class="px-6 py-4"> 2h </td>
+                            <td class="px-6 py-4 text-right"> <a href="#"
+                                    class="font-medium text-white hover:underline">Edit</a> </td>
+                        </tr>
+                        <tr
+                            class="bg-gray-900 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 ">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium whitespace-nowrap text-white border-l-8 border-cyan-400">
+                                Crear back-end </th>
+                            <td class="px-6 py-4"> Pedro </td>
+                            <td class="px-6 py-4"> En proceso </td>
+                            <td class="px-6 py-4"> 4h </td>
+                            <td class="px-6 py-4 text-right"> <a href="#"
+                                    class="font-medium text-white hover:underline">Edit</a> </td>
+                        </tr>
+                        <tr
+                            class="bg-gray-900 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 ">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium whitespace-nowrap text-white border-l-8 border-cyan-400">
+                                Crear dashboard </th>
+                            <td class="px-6 py-4"> Javi </td>
+                            <td class="px-6 py-4"> En proceso </td>
+                            <td class="px-6 py-4"> 2h30m </td>
+                            <td class="px-6 py-4 text-right"> <a href="#"
+                                    class="font-medium text-white hover:underline">Edit</a> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-16">
+                <table class="min-w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs uppercase bg-gray-700 text-gray-400 border-l-8 border-cyan-500">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 w-2/4
+                ">
+                                Proyectos diarios
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Asignado
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Estado
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Tiempo real
+                            </th>
+                            <th scope="col" class="px-6 py-3"> <span class="sr-only">Edit</span> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            class="bg-gray-900 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 ">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium whitespace-nowrap text-white border-l-8 border-cyan-400">
+                                Crear landing page </th>
+                            <td class="px-6 py-4"> Juan </td>
+                            <td class="px-6 py-4"> En proceso </td>
+                            <td class="px-6 py-4"> 2h </td>
+                            <td class="px-6 py-4 text-right"> <a href="#"
+                                    class="font-medium text-white hover:underline">Edit</a> </td>
+                        </tr>
+                        <tr
+                            class="bg-gray-900 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 ">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium whitespace-nowrap text-white border-l-8 border-cyan-400">
+                                Crear landing page </th>
+                            <td class="px-6 py-4"> Juan </td>
+                            <td class="px-6 py-4"> En proceso </td>
+                            <td class="px-6 py-4"> 2h </td>
+                            <td class="px-6 py-4 text-right"> <a href="#"
+                                    class="font-medium text-white hover:underline">Edit</a> </td>
+                        </tr>
+                        <tr
+                            class="bg-gray-900 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 ">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium whitespace-nowrap text-white border-l-8 border-cyan-400">
+                                Crear back-end </th>
+                            <td class="px-6 py-4"> Pedro </td>
+                            <td class="px-6 py-4"> En proceso </td>
+                            <td class="px-6 py-4"> 4h </td>
+                            <td class="px-6 py-4 text-right"> <a href="#"
+                                    class="font-medium text-white hover:underline">Edit</a> </td>
+                        </tr>
+                        <tr
+                            class="bg-gray-900 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600 ">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium whitespace-nowrap text-white border-l-8 border-cyan-400">
+                                Crear dashboard </th>
+                            <td class="px-6 py-4"> Javi </td>
+                            <td class="px-6 py-4"> En proceso </td>
+                            <td class="px-6 py-4"> 2h30m </td>
+                            <td class="px-6 py-4 text-right"> <a href="#"
+                                    class="font-medium text-white hover:underline">Edit</a> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <section class="absolute top-0 left-0 right-0 -z-10" data-astro-cid-3qnzmn4q>
+            <div id="cursor" data-astro-cid-3qnzmn4q></div>
+        </section>
+        <footer class="bg-gray-900">
+            <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+                <div class="md:flex md:justify-between">
+                    <div class="mb-6 md:mb-0"> <a href="https://flowbite.com/" class="flex items-center"> <img
+                                src="/logoScrumManager.svg" class="h-8 me-3" alt="FlowBite Logo"> <span
+                                class="self-center text-2xl font-semibold whitespace-nowrap text-white">Scrum
+                                Manager</span> </a> </div>
+                    <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3 sm:pl-24">
+                        <div>
+                            <h2 class="mb-6 text-sm font-semibold text-white uppercase">Síguenos</h2>
+                            <ul class="text-gray-400 font-medium">
+                                <li class="mb-4"> <a href="https://github.com/Jovaoo" class="hover:underline text-white"
+                                        target="_blank">Github</a> </li>
+                                <li> <a href="https://www.linkedin.com/in/javier-bernabeu-caballero"
+                                        class="hover:underline text-white" target="_blank">Linkedin</a> </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h2 class="mb-6 text-sm font-semibold text-white uppercase">Legal</h2>
+                            <ul class="text-gray-400 font-medium">
+                                <li class="mb-4"> <a href="#" class="hover:underline text-white">Política de
+                                        Privacidad</a> </li>
+                                <li> <a href="#" class="hover:underline text-white">Términos y Condiciones</a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr class="my-6 border-gray-700 sm:mx-auto lg:my-8">
+                <div class="sm:flex sm:items-center sm:justify-between"> <span
+                        class="text-sm text-gray-400 sm:text-center">© 2024 <a href="https://flowbite.com/"
+                            class="hover:underline text-white">Scrum Manager</a>. Todos los derechos reservados.</span>
+                    <div class="flex mt-4 sm:justify-center sm:mt-0"> <a href="#"
+                            class="text-white hover:text-gray-900"> <svg class="w-4 h-4" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 8 19">
+                                <path fill-rule="evenodd"
+                                    d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z"
+                                    clip-rule="evenodd"></path>
+                            </svg> <span class="sr-only">Facebook page</span> </a> <a href="#"
+                            class="text-white hover:text-gray-900 ms-5"> <svg class="w-4 h-4" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 21 16">
+                                <path
+                                    d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z">
+                                </path>
+                            </svg> <span class="sr-only">Discord community</span> </a> <a href="#"
+                            class="text-white hover:text-gray-900 ms-5"> <svg class="w-4 h-4" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 17">
+                                <path fill-rule="evenodd"
+                                    d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z"
+                                    clip-rule="evenodd"></path>
+                            </svg> <span class="sr-only">Twitter page</span> </a> <a href="#"
+                            class="text-white hover:text-gray-900 ms-5"> <svg class="w-4 h-4" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z"
+                                    clip-rule="evenodd"></path>
+                            </svg> <span class="sr-only">GitHub account</span> </a> </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
+</body>
+
+</html>
