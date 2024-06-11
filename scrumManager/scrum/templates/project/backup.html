@@ -1,0 +1,665 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es" data-astro-cid-sckkx6r4>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Proyecto síntesis">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/svg+xml" href="{% static 'img/logoScrumManager.svg' %}">
+    <meta name="generator" content="Astro v4.4.6">
+    <title>{{ project.name }} | Scrum Manager</title>
+    <link rel="stylesheet" href="{% static 'chat.css' %}" />
+    <link rel="stylesheet" href="{% static 'output.css' %}" />
+    <link rel="stylesheet" href="{% static 'input.css' %}" />
+    <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/styles/ag-grid.css">
+    <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/styles/ag-theme-quartz.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
+
+    <script type="module" src="{% static 'hoisted.DIBE3aqc.js' %}"></script>
+</head>
+
+<body class="bg-zinc-900 overflow-x-hidden no-scrollwidth" data-astro-cid-sckkx6r4>
+    {% include 'messages.html' %}
+    <section class="absolute top-0 left-0 right-0 -z-10" data-astro-cid-3qnzmn4q>
+        <div id="cursor" data-astro-cid-3qnzmn4q></div>
+    </section>
+    <main class="bg-background min-h-screen">
+        {% include 'header.html' %}
+        <div class="min-h-screen flex flex-col text-white">
+            <div>
+                <div class="flex justify-between items-center px-20 py-2">
+                    <h1 id="{{ project.id }}" class="text-4xl font-bold">{{ project.name }}</h1>
+                    <button class="bg-primary text-white rounded-lg p-2 bg-gray-700 hover:bg-gray-500" onclick="settingsTable()">
+                        <svg class="w-10 h-10 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13v-2a1 1 0 0 0-1-1h-.757l-.707-1.707.535-.536a1 1 0 0 0 0-1.414l-1.414-1.414a1 1 0 0 0-1.414 0l-.536.535L14 4.757V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v.757l-1.707.707-.536-.535a1 1 0 0 0-1.414 0L4.929 6.343a1 1 0 0 0 0 1.414l.536.536L4.757 10H4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h.757l.707 1.707-.535.536a1 1 0 0 0 0 1.414l1.414 1.414a1 1 0 0 0 1.414 0l.536-.535 1.707.707V20a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-.757l1.707-.708.536.536a1 1 0 0 0 1.414 0l1.414-1.414a1 1 0 0 0 0-1.414l-.535-.536.707-1.707H20a1 1 0 0 0 1-1Z" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            {% for task_group in task_groups %}
+                <div class="py-8">
+                    <div class="flex flex-col px-20 p-2">
+                        <div class="flex justify-between items-center py-2">
+                            <h2 class="text-2xl font-bold">{{ task_group }}</h2>
+                        </div>
+                        <div id="group{{ task_group.id }}" class="ag-theme-quartz-dark overflow-x-auto"></div>
+                    </div>
+                    <div>
+                        <button class="bg-primary flex text-white bg-gray-700 hover:bg-gray-500 rounded-lg p-2 mx-20" onclick="addTask{{ task_group.id }}({{ task_group.id }})" id="addTask">
+                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 7.757v8.486M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            </svg>
+                            <span class="px-2">Nueva tarea</span>
+                        </button>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="flex justify-center items-center p-8">
+                <button class="bg-primary flex text-white bg-gray-700 hover:bg-gray-500 rounded-lg p-2" onclick="showCreateGroup()">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 7.757v8.486M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                    <span class="px-2">Nuevo grupo</span>
+                </button>
+            </div>
+        </div>
+        <!-- Div para pedir el nombre del nuevo grupo -->
+        <div id="addGroupModal" class="hidden fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+            <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                <div class="fixed inset-0 bg-gray-900/70 transition-opacity" aria-hidden="true"></div>
+                <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                <div class="inline-block align-bottom bg-zinc-900 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                    <div class="bg-zinc-900 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                        <div class="sm:flex sm:items-start">
+                            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                <h3 class="text-lg leading-6 font-medium text-white" id="modal-headline">
+                                    Nuevo grupo
+                                </h3>
+                                <div class="mt-2">
+                                    <input type="text" id="newGroupName" class="w-full bg-zinc-800 text-white border border-gray-700 rounded-lg p-2" placeholder="Nombre del grupo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-zinc-900 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                        <button class="bg-primary text-white rounded-lg p-2 bg-blue-500 hover:bg-blue-700 m-2" onclick="createTaskGroup()">
+                            Crear grupo
+                        </button>
+                        <button class="bg-primary text-white rounded-lg p-2 bg-gray-700 hover:bg-gray-500 m-2" onclick="closeModal()">
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Div para confirmar el borrar tarea -->
+        <div id="deleteTaskModal" class="hidden fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+            <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                <div class="fixed inset-0 bg-gray-900/70 transition-opacity" aria-hidden="true"></div>
+                <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                <div class="inline-block align-bottom bg-zinc-900 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                    <div class="bg-zinc-900 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                        <div class="sm:flex sm:items-start">
+                            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                <h3 class="text-lg leading-6 font-medium text-white" id="modal-headline">
+                                    ¿Estás seguro de que deseas borrar esta tarea?
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-zinc-900 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                        <button class="bg-primary text-white rounded-lg p-2 bg-red-500 hover:bg-red-700 m-2" onclick="" id="deleteTask">
+                            Borrar tarea
+                        </button>
+                        <button class="bg-primary text-white rounded-lg p-2 bg-gray-700 hover:bg-gray-500 m-2" onclick="closeDeleteTaskModal()">
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% include 'footer.html' %}
+
+        <script src="https://unpkg.com/ag-grid-community@31.3.2/dist/ag-grid-community.noStyle.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+
+        <script>
+            function DatePicker() {}
+
+            DatePicker.prototype.init = function(params) {
+                this.params = params;
+                this.eInput = document.createElement('input');
+                this.eInput.type = 'text';
+                this.eInput.style.width = '100%';
+                
+                // Initialize flatpickr
+                this.flatpickr = flatpickr(this.eInput, {
+                    dateFormat: 'M, d Y',
+                    defaultDate: params.value ? new Date(params.value) : null,
+                    onChange: this.onDateChanged.bind(this),
+                    theme: 'dark',
+                    locale: 'es' // Configuración para mostrar el calendario en español
+                });
+            
+                if (params.value) {
+                    this.eInput.value = new Date(params.value).toLocaleDateString('es-ES', { month: 'short', day: 'numeric', year: 'numeric' });
+                }
+            };
+            
+            DatePicker.prototype.getGui = function() {
+                return this.eInput;
+            };
+            
+            DatePicker.prototype.afterGuiAttached = function() {
+                this.eInput.focus();
+                this.flatpickr.open();
+            };
+            
+            DatePicker.prototype.getValue = function() {
+                // Obtener la fecha del flatpickr
+                const selectedDate = this.flatpickr.selectedDates[0];
+                return selectedDate;
+            };
+            
+            DatePicker.prototype.destroy = function() {
+                this.flatpickr.destroy();
+            };
+            
+            DatePicker.prototype.isPopup = function() {
+                return true;
+            };
+            
+            DatePicker.prototype.onDateChanged = function(selectedDates) {
+                if (selectedDates[0]) {
+                    this.eInput.value = selectedDates[0].toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: '2-digit' });
+                    this.params.stopEditing(); // Stop editing to apply the value immediately
+                    // Actualizar el valor en el modelo de datos
+                    this.params.data[this.params.colDef.field] = selectedDates[0].toISOString();
+                }
+            };
+
+            DatePicker.prototype.valueSetter = function(params) {
+                if (params.newValue) {
+                    // Convertir el valor de la fecha al formato esperado
+                    var newDate = parseDate(params.newValue);
+                    if (isNaN(newDate.getTime())) {
+                        return false; // Fecha no válida, devolver false para evitar establecer el valor
+                    }
+                    // Asignar la nueva fecha al modelo de datos
+                    params.data[params.colDef.field] = newDate.toISOString();
+                    return true;
+                }
+                return false;
+            };
+
+            let gridApis = {};
+            const grids = [];
+
+            {% for task_group in task_groups %}
+                taskGroupId = '{{ task_group.id }}';
+                let gridApi{{ task_group.id }};
+                
+                var cellEditorParamsUsers = [];
+                {% for project_user in project_users %}
+                    cellEditorParamsUsers.push('{{ project_user }}');
+                {% endfor %}
+
+                var columnDefs = [
+                    { headerName: "Tarea", field: "Tarea", editable: true, sortable: false, pinned: 'left', width: 400, suppressMovable: true, rowDrag: true },
+                    {% for tasksgroup_variable in tasksgroup_variables %}
+                        {% if tasksgroup_variable.value == 'string' %}
+                            { headerName: "{{ tasksgroup_variable.name }}", field: "{{ tasksgroup_variable.name }}", editable: true, sortable: false, width: 150 },
+                        {% elif tasksgroup_variable.value == 'int' %}
+                            { headerName: "{{ tasksgroup_variable.name }}", field: "{{ tasksgroup_variable.name }}", editable: true, sortable: true, width: 100 },
+                        {% elif tasksgroup_variable.value == 'date' %}
+                            {
+                                headerName: "Fecha",
+                                field: "Fecha",
+                                editable: true,
+                                cellEditor: 'datePicker',
+                                valueFormatter: function(params) {
+                                    if (params.value) {
+                                        let date = new Date(params.value);
+                                        return date.toLocaleDateString('es-ES', { month: 'short', day: 'numeric', year: 'numeric' });
+                                    }
+                                    return '';
+                                }
+                            },
+                        {% elif tasksgroup_variable.value == 'selectable' %}
+                            {% if tasksgroup_variable.name == 'Asignado' %}
+                                { headerName: "Asignado", field: "Asignado", editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: { values: cellEditorParamsUsers } },
+                            {% elif tasksgroup_variable.name == 'Estado' %}
+                                {
+                                    headerName: "Estado", 
+                                    field: "Estado", 
+                                    editable: true, 
+                                    cellEditor: 'agSelectCellEditor', 
+                                    width: 150,
+                                    cellEditorParams: { values: ['Interrumpido', 'Pendiente', 'En proceso', 'Completado'] },
+                                    cellStyle: function(params) {
+                                        if (params.value === 'Interrumpido') {
+                                            return { background: '#F7B1AB', color: '#B30000' };
+                                        } else if (params.value === 'Pendiente') {
+                                            return { background: '#FFF9C4', color: '#333333' };
+                                        } else if (params.value === 'En proceso') {
+                                            return { background: '#91A8FF', color: '#000000' };
+                                        } else if (params.value === 'Completado') {
+                                            return { background: '#B2DFDB', color: '#000000' };
+                                        }
+                                        return null;
+                                    }
+                                },
+                            {% else %}
+                                { headerName: "{{ tasksgroup_variable.name }}", field: "{{ tasksgroup_variable.name }}", editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: { values: ['Interrumpido', 'Pendiente', 'En proceso', 'Completado'] } },
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                    {
+                        headerName: "Borrar", 
+                        field: "borrar", 
+                        sortable: false, 
+                        pinned: 'right', 
+                        width: 75, 
+                        suppressMovable: true, 
+                        resizable: false, 
+                        cellRenderer: function(params) {
+                            var div = document.createElement('div');
+                            div.style.display = 'flex';
+                            div.style.justifyContent = 'center';
+                            div.style.padding = '6px';
+                            var button = document.createElement('button');
+                            button.innerHTML = '<svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/></svg>';
+                            button.onclick = function() {
+                                showDialogDeleteTask{{ task_group.id }}();
+                            };
+                            div.appendChild(button);
+                            return div;
+                        }
+                    },
+                ];
+
+                var rowData{{ task_group.id }} = [];
+                var taskGroupsAttributes = JSON.parse('{{ task_groups_attributes | escapejs }}');
+                Object.keys(taskGroupsAttributes).forEach(function(key) {
+                    if (key === '{{ task_group.id }}') {
+                        const group = taskGroupsAttributes[{{ task_group.id }}];
+                        group.tasks.forEach(function(task) {
+                            var taskDetails = { TaskGroup: group.id };
+                            for (var key in task.details) {
+                                if (task.details.hasOwnProperty(key)) {
+                                    if (key === 'Fecha') {
+                                        var date = parseDate(task.details[key]);
+                                        if (!isNaN(date.getTime())) {
+                                            taskDetails[key] = date;
+                                        }
+                                    } else if (key === 'Horas' || key === 'Minutos') {
+                                        var number = parseInt(task.details[key]);
+                                        if (!isNaN(number)) {
+                                            taskDetails[key] = number;
+                                        }
+                                    } else {
+                                        taskDetails[key] = task.details[key];
+                                    }
+                                }
+                            }
+                            rowData{{ task_group.id }}.push(taskDetails);
+                        });
+                    }
+                });
+
+                var gridOptions = {
+                    columnDefs: columnDefs,
+                    rowData: rowData{{ task_group.id }},
+                    components: {
+                        datePicker: DatePicker,
+                    },
+                    getRowStyle: function(params) {
+                        if (params.node && params.node.editing) {
+                            return { background: '#1e1e1e', color: 'white' };
+                        }
+                    },
+                    onCellValueChanged: function(event) {
+                        saveChanges(event.data.Id, event.data);
+                    },
+                    suppressNoRowsOverlay: true,
+                    rowSelection: 'single',
+                    onRowSelected: function(event) {
+                        console.log('Fila seleccionada:', event.node.data);
+                    },
+                    rowDragManaged: true,
+                    suppressMoveWhenRowDragging: false,
+                };
+
+                var eGridDiv = document.querySelector('#group{{ task_group.id }}');
+                gridApi{{ task_group.id }} = agGrid.createGrid(eGridDiv, gridOptions);
+                updateTableHeight{{ task_group.id }}("group{{ task_group.id }}");
+                gridApis[taskGroupId] = gridApi{{ task_group.id }};
+                grids.push(gridApi{{ task_group.id }});
+
+
+                function agregarNuevaColumna(nombreColumna) {
+                    columnDefs.push({
+                        headerName: nombreColumna,
+                        field: nombreColumna.toLowerCase(),
+                        editable: true,
+                    });
+                
+                    rowData{{ task_group.id }}.forEach(function(row) {
+                        row[nombreColumna.toLowerCase()] = "";
+                    });
+                
+                    gridApi{{ task_group.id }}.setColumnDefs(columnDefs);
+                    gridApi{{ task_group.id }}.setRowData(rowData{{ task_group.id }});
+                }
+                
+                function addTask{{ task_group.id }}(taskTaskGroup) {
+                    const hasReferenceTask = rowData{{ task_group.id }}.some(task => task.TaskGroup === taskTaskGroup);
+                    let newTaskData;
+                    if (!hasReferenceTask) {
+                        newTaskData = {
+                            Tarea: "Nueva tarea",
+                            TaskGroup: taskTaskGroup,
+                        };
+                    } else {
+                        {% for task_group in task_groups %}
+                        Object.keys(taskGroupsAttributes).forEach(function(key) {
+                            if (key === '{{ task_group.id }}') {
+                                referenceData = taskGroupsAttributes[{{ task_group.id }}].tasks[0].details;
+                                console.log('Referencia de datos:', referenceData);
+                            }
+                        });
+                        {% endfor %}
+                        newTaskData = {};
+                        for (const key in referenceData) {
+                            if (key !== 'Id' && key !== 'TaskGroup') {
+                                newTaskData[key] = "";
+                            }
+                        }
+                    }
+
+                    let formattedData = "";
+                    for (const [key, value] of Object.entries(newTaskData)) {
+                        formattedData += `${key}:${value}\\|/`;
+                    }
+
+                    fetch('/create_task/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': getCookie('csrftoken')
+                        },
+                        body: JSON.stringify({ formatted_data: formattedData, task_group_id: taskTaskGroup })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            console.log('Nueva tarea creada. ID:', data.task_id);
+                            var newItem = {};
+                            for (const [key, value] of Object.entries(newTaskData)) {
+                                newItem[key.toLowerCase()] = value;
+                            }
+                            newItem['Id'] = data.task_id;
+                            rowData{{ task_group.id }}.push(newItem);
+                            gridApi{{ task_group.id }}.applyTransaction({ add: [newItem] });
+                            groupTaskId = "group" + taskTaskGroup;
+                            updateTableHeight{{ task_group.id }}("group{{ task_group.id }}");
+                        } else {
+                            console.error('Error al crear la tarea, error:', data.error || 'Unknown error');
+                        }
+                    });
+                }
+                
+                function deleteTask{{ task_group.id }}() {
+                    const selectedRows = gridApi{{ task_group.id }}.getSelectedRows();
+                    if (selectedRows.length > 0) {
+                        var taskId = selectedRows[0].Id;
+                        var taskGroup = selectedRows[0].TaskGroup;
+                        fetch(`/delete_task/${taskId}/`, {
+                            method: 'DELETE',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                                'X-CSRFToken': getCookie('csrftoken')
+                            }
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.status === 'success') {
+                                gridApi{{ task_group.id }}.applyTransaction({ remove: selectedRows });
+                                closeDeleteTaskModal();
+                                groupTaskId = "group" + taskGroup;
+                                updateTableHeight{{ task_group.id }}("group{{ task_group.id }}");
+                            } else {
+                                console.error('Failed to delete task');
+                            }
+                        });
+                    } else {
+                        console.error('No task selected');
+                    }
+                }
+
+                function createTaskGroup() {
+                    var newGroupName = document.getElementById('newGroupName').value;
+                    var projectId = document.querySelector('h1').id;
+                    if (newGroupName) {
+                        fetch('/create_taskgroup/', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRFToken': getCookie('csrftoken')
+                            },
+                            body: JSON.stringify({ name: newGroupName, project_id: projectId })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.status === 'success') {
+                                location.reload();
+                            } else {
+                                console.error('Error creating task group:', data.error || 'Unknown error');
+                            }
+                        });
+                    }
+                }
+
+                gridApi{{ task_group.id }}.addEventListener('cellValueChanged', function(event) {
+                    const rowData = event.data;
+                    const taskId = rowData.Id;
+                    saveChanges(taskId, rowData);
+                });
+
+                function showDialogDeleteTask{{ task_group.id }}() {
+                    var modal = document.getElementById('deleteTaskModal');
+                    modal.classList.remove('hidden');
+                    var button = document.getElementById('deleteTask');
+                    button.onclick = function() {
+                        deleteTask{{ task_group.id }}();
+                    };
+                }
+
+                function closeDeleteTaskModal() {
+                    var modal = document.getElementById('deleteTaskModal');
+                    modal.classList.add('hidden');
+                }
+
+                function updateTableHeight{{ task_group.id }}(idTable) {
+                    var numTasks = gridApi{{ task_group.id }}.getDisplayedRowCount();
+                    var tableHeight = 68 + (numTasks * 42);
+                    var element = document.getElementById(idTable);
+                    if (element) {
+                        element.style.height = tableHeight + "px";
+                    } else {
+                        console.warn("Element with ID " + idTable + " not found.");
+                    }
+                }
+
+                gridApi{{ task_group.id }}.addEventListener('rowDragEnd', function(event) {
+                    var movingRow = event.node.data;
+                    var destinationGroup = event.overNode.data.TaskGroup;
+                    
+                    
+                    updateTaskGroup(movingRow.Id, destinationGroup);
+                });
+
+            {% endfor %}
+            console.log(gridApis);
+
+            function updateTaskGroup(taskId, newTaskTaskGroup) {
+                fetch(`/update_task_group/${taskId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: JSON.stringify({ new_task_group_id: newTaskTaskGroup })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        console.log('Task group updated successfully');
+                    } else {
+                        console.error('Failed to update task group:', data.message || 'Unknown error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error updating task group:', error);
+                });
+            }
+
+            function onRowDragEnter(event) {
+                console.log('onRowDragEnter', event);
+            }
+
+            function findTargetGridApi(overNode) {
+                return gridApis.find(grid => grid.taskGroupId === overNode.data.TaskGroup);
+            }
+            
+            function onRowDragEnd(event) {
+                if (!event.overNode) {
+                    console.log('Dropped outside of any grid');
+                    return;
+                }
+                if (event.overNode && event.node !== event.overNode) {
+                    var movingData = event.node.data;
+                    var targetGridApi = findTargetGridApi(event.overNode);
+                    if (targetGridApi) {
+                        event.api.applyTransaction({ remove: [movingData] });
+                        targetGridApi.applyTransaction({ add: [movingData] });
+                        updateTaskGroup(movingData.Id, movingData.TaskGroup);
+                    }
+                }
+            }
+            
+            function onRowDragMove(event) {
+                console.log('onRowDragMove', event);
+            }
+            
+            function onRowDragLeave(event) {
+                console.log('onRowDragLeave', event);
+            }
+
+            function saveChanges(taskId, rowData) {
+                const taskData = buildTaskData(rowData);
+                fetch(`/update_task/${taskId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: `task_data=${encodeURIComponent(taskData)}`
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        console.log('Task updated successfully');
+                    } else {
+                        console.error('Failed to update task');
+                    }
+                });
+            }
+            
+            function buildTaskData(rowData) {
+                let taskData = '';
+                for (let key in rowData) {
+                    if (rowData.hasOwnProperty(key) && key !== 'TaskGroup') {
+                        if (key === 'Fecha') {
+                            let date = new Date(rowData[key]);
+                            let day = date.getDate();
+                            let month = date.getMonth() + 1;
+                            let year = date.getFullYear().toString().slice(-2);
+                            let formattedDate = `${day}/${month}/${year}`;
+                            taskData += `${key}:${formattedDate}\\|/`;
+                        } else {
+                            taskData += `${key}:${rowData[key]}\\|/`;
+                        }
+                    }
+                }
+                return taskData;
+            }
+
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+
+            function parseDate(dateString) {
+                var parts = dateString.split('/');
+                var day = parseInt(parts[0]);
+                var month = parseInt(parts[1]) - 1;
+                var year = parseInt(parts[2]) + 2000;
+                return new Date(year, month, day);
+            }
+
+            function dateFormatter(params) {
+                if (params.value) {
+                    let date = new Date(params.value);
+                    return date.toLocaleDateString();
+                }
+                return '';
+            }
+
+            function showCreateGroup() {
+                var modal = document.getElementById('addGroupModal');
+                modal.classList.remove('hidden');
+            }
+
+            function closeModal() {
+                var modal = document.getElementById('addGroupModal');
+                modal.classList.add('hidden');
+            }
+
+            
+
+            document.addEventListener('DOMContentLoaded', function() {
+                grids.forEach((api, index) => {
+                    grids.forEach((targetApi, targetIndex) => {
+                        if (index !== targetIndex) {
+                            const dropZoneParams = targetApi.getRowDropZoneParams({
+                                onDragStop: function(params) {
+                                    api.applyTransaction({ add: [params.node.data] });
+                                    targetApi.applyTransaction({ remove: [params.node.data] });
+                                }
+                            });
+                            api.addRowDropZone(dropZoneParams);
+                        }
+                    });
+                });
+            });
+        </script>
+    </main>
+</body>
+
+</html>

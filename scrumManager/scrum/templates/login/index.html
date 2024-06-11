@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="es" data-astro-cid-sckkx6r4>
 
@@ -5,29 +7,20 @@
     <meta charset="UTF-8">
     <meta name="description" content="Proyecto sintesis">
     <meta name="viewport" content="width=device-width">
-    <link rel="icon" type="image/svg+xml" href="/logoScrumManager.svg">
+    <link rel="icon" type="image/svg+xml" href="{% static 'img/logoScrumManager.svg' %}">
     <meta name="generator" content="Astro v4.4.6">
     <title>Iniciar sesión | Scrum Manager</title>
-    <link rel="stylesheet" href="/_astro/chat.CBFDjzKy.css" />
-    <script type="module" src="/_astro/hoisted.GXggxqRz.js"></script>
+    <link rel="stylesheet" href="{% static 'chat.css'%}" />
+    <link rel="stylesheet" href="{% static 'output.css'%}" />
+    <link rel="stylesheet" href="{% static 'input.css'%}" />
+    <script type="module" src="{% static 'hoisted.GXggxqRz.js'%}"></script>
 </head>
 
 <body class="bg-zinc-900 overflow-x-hidden no-scrollwidth" data-astro-cid-sckkx6r4>
+    {% include 'messages.html' %}
+
     <main class="bg-background">
-        <div class="px-4 py-4 lg:px-6 lg:pl-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center justify-start"> <a href="/" class="flex ml-2 md:mr-24"> <img
-                            src="/logoScrumManager.svg" class="h-8 mr-3" alt="ScrumManager Logo"> <span
-                            class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap text-white hidden sm:block ">Scrum
-                            Manager</span> </a> </div> <!-- Profile -->
-                <div class="flex items-center ml-3">
-                    <div class="mr-2 p-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-700"> <a href="/login"
-                            class="text-gray-400 font-bold ">Iniciar sesión</a> </div>
-                    <div class="mx-1 p-2 text-gray-800 bg-slate-100 rounded-lg hover:bg-gray-500 hover:text-gray-100">
-                        <a href="/register" class="font-bold">Registrarse</a> </div>
-                </div>
-            </div>
-        </div>
+        {% include 'header.html'%}
         <section class="absolute top-0 left-0 right-0 -z-10" data-astro-cid-3qnzmn4q>
             <div id="cursor" data-astro-cid-3qnzmn4q></div>
         </section>
@@ -44,24 +37,20 @@
                         </p>
                     </div>
                     <div class="space-y-4">
-                        <div class="space-y-4 space-y-reverse"> <label
-                                class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white"
-                                for="email">
-                                Email
-                            </label><input type="email"
-                                class="flex h-10 w-full rounded-md border border-input px-3 py-2 text-sm ring-offset-background file:border-0 file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-gray-800 placeholder:text-zinc-400 text-white"
-                                id="email" placeholder="v.sauler@ejemplo.com" required=""> <label
-                                class=" text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white"
-                                for="password">
-                                Contraseña
-                            </label><input type="password"
-                                class="flex h-10 w-full rounded-md border border-input px-3 py-2 text-sm ring-offset-background file:border-0 file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-gray-800 placeholder:text-zinc-400 text-white"
-                                id="password" placeholder="**********" required="">
-                            <div class="flex justify-center items-center"> <button
-                                    class="whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gray-500 hover:bg-gray-400 text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 text-white ">
-                                    Iniciar sesión
-                                </button> </div>
-                        </div>
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="space-y-4 space-y-reverse">
+                                <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white" for="username">Email</label>
+                                <input type="email" class="flex h-10 w-full rounded-md border border-input px-3 py-2 text-sm ring-offset-background file:border-0 file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-gray-800 placeholder:text-zinc-400 text-white" id="username" placeholder="v.sauler@ejemplo.com" required="" name="username">
+                                
+                                <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white" for="password">Contraseña</label>
+                                <input type="password" class="flex h-10 w-full rounded-md border border-input px-3 py-2 text-sm ring-offset-background file:border-0 file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-gray-800 placeholder:text-zinc-400 text-white" id="password" placeholder="**********" required="" name="password">
+                                
+                                <div class="flex justify-center items-center">
+                                    <input type="submit" value="Iniciar sesión" class="whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gray-500 hover:bg-gray-400 text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 text-white">
+                                </div>
+                            </div>
+                        </form>                        
                         <div class="flex items-center space-x-2">
                             <hr class="flex-grow border-gray-700"><span
                                 class="text-zinc-400 dark:text-zinc-300 text-sm">
@@ -84,7 +73,7 @@
                             </div>
                         </button> <span class="text-sm text-center text-zinc-400 space-y-2">
                             ¿No tienes una cuenta?
-                            <a class="text-blue-600 hover:text-blue-800" href="/register" rel="ugc">Regístrate</a>
+                            <a class="text-blue-600 hover:text-blue-800" href="{% url 'register' %}" rel="ugc">Regístrate</a>
                         </span>
                     </div>
                 </div>
@@ -239,13 +228,14 @@
                     <path
                         d="M1088.24817,662.4183H111.75183a1.41521,1.41521,0,1,1,0-2.83042h976.49634a1.41521,1.41521,0,1,1,0,2.83042Z"
                         transform="translate(-110.33661 -237.5817)" fill="#ccc"></path>
-                </svg> </div>
+                </svg> 
+            </div>
         </div>
         <footer class="bg-gray-900">
             <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
                 <div class="md:flex md:justify-between">
                     <div class="mb-6 md:mb-0"> <a href="https://flowbite.com/" class="flex items-center"> <img
-                                src="/logoScrumManager.svg" class="h-8 me-3" alt="FlowBite Logo"> <span
+                                src="{% static 'img/logoScrumManager.svg' %}" class="h-8 me-3" alt="FlowBite Logo"> <span
                                 class="self-center text-2xl font-semibold whitespace-nowrap text-white">Scrum
                                 Manager</span> </a> </div>
                     <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3 sm:pl-24">

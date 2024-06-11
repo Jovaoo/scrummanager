@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-astro-cid-sckkx6r4>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Proyecto sintesis" />
+    <meta name="viewport" content="width=device-width" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="{% static 'img/logoScrumManager.svg' %}"
+    />
+    <meta name="generator" content="Astro v4.4.6" />
+    <title>Crear grupo | Scrum Manager</title>
+    <link rel="stylesheet" href="{% static 'chat.css'%}" />
+    <link rel="stylesheet" href="{% static 'output.css'%}" />
+    <link rel="stylesheet" href="{% static 'input.css'%}" />
+    <script type="module" src="{% static 'hoisted.DZsHhnno.js'%}"></script>
+  </head>
+
+  <body
+    class="bg-zinc-900 overflow-x-hidden no-scrollwidth "
+    data-astro-cid-sckkx6r4
+  >
+    {% include 'messages.html' %}
+    <main class="bg-background ">
+      {% include 'header.html' %}
+      <section
+        class="absolute top-0 left-0 right-0 -z-10 "
+        data-astro-cid-3qnzmn4q
+      >
+        <div id="cursor" data-astro-cid-3qnzmn4q></div>
+        
+      </section>
+      <section class="m-12 flex items-center justify-around gap-12">
+            <div>
+                <img src="{% static 'img/create_business.svg' %}" alt="Grupo" class="w-96">
+            </div>
+            <div>
+                <div>
+                    <h1 class="text-2xl font-bold text-white py-2">Crea un nuevo grupo</h1>
+                </div>
+                <div class="flex flex-col items-center">
+                    <form method="post" class="bg-gray-900 p-6 rounded-xl">
+                        {% csrf_token %}
+                        <div class="space-y-4 space-y-reverse">
+                            <div class="p-4">
+                                <label class="text-lg font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white" for="name-company">Nombre</label>
+                                <p class="text-white text-sm ">El nombre de tu grupo no puede ser cambiado una vez creado.</p>
+                                <input type="text" class="flex h-10 w-full rounded-md border border-input px-3 py-2 my-2 text-sm ring-offset-background file:border-0 file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-gray-800 placeholder:text-zinc-400 text-white" id="name-company" placeholder="InfoDirect" required="" name="name-company">
+                            </div>
+                            <div class="p-4">
+                                <label class="text-lg font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white" for="access-code">Clave de acceso</label>
+                                <p class="text-white text-sm">La clave de acceso es necesaria para que los miembros de tu grupo puedan unirse.</p>
+                                <input type="text" class="flex h-10 w-full rounded-md border border-input px-3 py-2 my-2 text-sm ring-offset-background file:border-0 file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-gray-800 placeholder:text-zinc-400 text-white" id="password" placeholder="1nF0d1R3cT" required="" name="access-code">
+                            </div>
+                            <div class="flex justify-center items-center">
+                                <input type="submit" value="Crear" class="whitespace-nowrap rounded-md text-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-blue-500 hover:bg-blue-600 text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 text-white">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+       </section>
+      {% include 'footer.html' %}
+    </main>
+  </body>
+  <script>
+    function showCreateProject(){
+        var createProject = document.querySelector('.createProject');
+        createProject.classList.toggle('hidden');
+    }
+
+    </script>
+</html>

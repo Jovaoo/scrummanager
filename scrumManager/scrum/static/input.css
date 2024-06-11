@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.alert-success {
+    background-color: rgb(223, 240, 216);
+    color: rgb(0, 100, 0);
+    border: 1px solid rgb(0, 100, 0);
+}
+
+.button-success {
+    background: linear-gradient(
+        to right, 
+        rgb(223, 240, 216),  
+        rgb(0, 100, 0)
+    );
+}
+
+.alert-error {
+    background-color: rgb(242, 222, 222);
+    color: rgb(185, 74, 72);
+    border: 1px solid rgb(185, 74, 72);
+}
+
+.button-error {
+    background: linear-gradient(
+        to right, 
+        rgb(242, 222, 222),  
+        rgb(185, 74, 72)
+    );
+}
+
+.alert-warning {
+    background-color: rgb(255, 236, 209);
+    color: rgb(215, 148, 24);
+    border: 1px solid rgb(215, 148, 24);
+}
+
+.button-warning {
+    background: linear-gradient(
+        to right, 
+        rgb(255, 236, 209),  
+        rgb(215, 148, 24)
+    );
+}
+
+.alert-info {
+    background-color: rgb(217, 237, 247);
+    color: rgb(13, 103, 118);
+    border: 1px solid rgb(13, 103, 118);
+}
+
+.button-info {
+    background: linear-gradient(
+        to right, 
+        rgb(217, 237, 247),  
+        rgb(13, 103, 118)
+    );
+}
+
+.alert-debug {
+    background-color: rgb(248, 249, 250);
+    color: rgb(33, 37, 41);
+    border: 1px solid rgb(33, 37, 41);
+}
+
+.button-debug {
+    background: linear-gradient(
+        to right, 
+        rgb(248, 249, 250),  
+        rgb(33, 37, 41)
+    );
+}
+
+.notification {
+    width: max-content;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(1.875rem);
+    opacity: 0;
+    visibility: hidden;
+    animation: fade-in 5s linear;
+}
+
+.notification__icon {
+    height: 1.625rem;
+    width: 1.625rem;
+    margin-right: 0.25rem;
+}
+
+.notification__body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem 0.5rem;
+}
+
+.notification__progress {
+    position: absolute;
+    left: 0.25rem;
+    bottom: 0.25rem;
+    width: calc(100% - 0.5rem);
+    height: 0.2rem;
+    transform: scaleX(0);
+    transform-origin: left;
+    border-radius: inherit;
+    animation: progress 4s 0.3s linear;
+}
+
+@keyframes fade-in {
+    5% {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    95% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes progress {
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.truncate {
+    max-width: 3rem; /* Ajusta el ancho máximo según tu preferencia */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Agrega puntos suspensivos si el texto supera el ancho */
+}
+
+/* AGGRID */
+
+.ag-center-cols-clipper,
+.ag-center-cols-container {
+  min-height: 300px !important;
+}
+
+.notif[data-astro-cid-mo56jcke] {
+    transform: translate3d(1030.2px, 64.8px, 50px) !important
+}
+
+.apps[data-astro-cid-mo56jcke] {
+    transform: translate3d(1160.2px, 64.8px, 50px) !important
+}
+
+
+/* Estilo para el borde izquierdo más oscuro en el encabezado de la tabla */
+
+.ag-theme-balham .ag-datepicker {
+    background-color: #333 !important; /* Cambia este color al que prefieras */
+    color: #fff !important; /* Cambia el color del texto si es necesario */
+}
+
+#tableTasks {
+    overflow-x: hidden;
+}
+
+/* Estilos personalizados para la barra de desplazamiento */
+.ag-root ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.ag-root ::-webkit-scrollbar-thumb {
+    background: #a5a5a5;
+    border-radius: 10px;
+}
+
+.ag-root ::-webkit-scrollbar-thumb:hover {
+    background: #c9c9c9; /* Cambia el color al pasar el cursor sobre la barra de desplazamiento */
+}
+
+.ag-root ::-webkit-scrollbar-thumb:active {
+    background: #c9c9c9; /* Cambia el color al hacer clic en la barra de desplazamiento */
+}
+
+.pcr-button::before, .pcr-button::after, .pcr-button, .pickr {
+    border-radius: 100% !important;
+}
+
+
+.pcr-app   {
+    background-color: #333 !important;
+}
+
+#drawer-navigation {
+    text-overflow: ellipsis;
+    scrollbar-width: none;
+}
