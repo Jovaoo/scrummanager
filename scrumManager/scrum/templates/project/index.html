@@ -865,7 +865,7 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.status === 'success') {
-                        console.log('Border color updated successfully');
+                        location.reload();
                         // Actualizar el CSS:
                         // Borrar primero los estilos anteriores
                         const elements = document.querySelectorAll(`.grid-color-{{task_group.id}} .ag-root-wrapper`);
@@ -1205,6 +1205,8 @@
                             const newColumnDefs = columnDefs.filter(column => column.field !== data.variable_name);
                             grid.setGridOption('columnDefs', newColumnDefs);
                             closeDeleteColumnModal();
+                            location.reload();
+
                         });
                     } else {
                         console.error('Failed to delete task group variable');
@@ -1231,6 +1233,8 @@
                     });
                 });
             });
+
+
 
         </script>
     </main>

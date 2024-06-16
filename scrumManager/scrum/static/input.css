@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .alert-success {
     background-color: rgb(223, 240, 216);
     color: rgb(0, 100, 0);
@@ -80,6 +79,7 @@
     opacity: 0;
     visibility: hidden;
     animation: fade-in 5s linear;
+    z-index: 9999; /* Asegura que las notificaciones tengan un alto z-index */
 }
 
 .notification__icon {
@@ -147,6 +147,21 @@
     transform: translate3d(1160.2px, 64.8px, 50px) !important
 }
 
+#messages-container {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 50;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    margin: 2px;
+}
+
+#inner-messages-container {
+    display: flex;
+    flex-direction: column-reverse;
+    
+}
 
 /* Estilo para el borde izquierdo más oscuro en el encabezado de la tabla */
 

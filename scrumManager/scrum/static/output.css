@@ -558,9 +558,17 @@ video {
   width: 100%;
 }
 
+.\!container {
+  width: 100% !important;
+}
+
 @media (min-width: 640px) {
   .container {
     max-width: 640px;
+  }
+
+  .\!container {
+    max-width: 640px !important;
   }
 }
 
@@ -568,11 +576,19 @@ video {
   .container {
     max-width: 768px;
   }
+
+  .\!container {
+    max-width: 768px !important;
+  }
 }
 
 @media (min-width: 1024px) {
   .container {
     max-width: 1024px;
+  }
+
+  .\!container {
+    max-width: 1024px !important;
   }
 }
 
@@ -580,11 +596,19 @@ video {
   .container {
     max-width: 1280px;
   }
+
+  .\!container {
+    max-width: 1280px !important;
+  }
 }
 
 @media (min-width: 1536px) {
   .container {
     max-width: 1536px;
+  }
+
+  .\!container {
+    max-width: 1536px !important;
   }
 }
 
@@ -636,10 +660,6 @@ video {
   bottom: 0px;
 }
 
-.bottom-6 {
-  bottom: 1.5rem;
-}
-
 .bottom-\[60px\] {
   bottom: 60px;
 }
@@ -660,10 +680,6 @@ video {
   right: 0px;
 }
 
-.right-6 {
-  right: 1.5rem;
-}
-
 .top-0 {
   top: 0px;
 }
@@ -678,6 +694,14 @@ video {
 
 .top-9 {
   top: 2.25rem;
+}
+
+.bottom-6 {
+  bottom: 1.5rem;
+}
+
+.right-6 {
+  right: 1.5rem;
 }
 
 .-z-10 {
@@ -714,10 +738,6 @@ video {
 
 .m-0 {
   margin: 0px;
-}
-
-.m-1 {
-  margin: 0.25rem;
 }
 
 .m-12 {
@@ -979,6 +999,10 @@ video {
   width: 83.333333%;
 }
 
+.w-2\/12 {
+  width: 16.666667%;
+}
+
 .w-2\/4 {
   width: 50%;
 }
@@ -1028,14 +1052,6 @@ video {
   width: 100%;
 }
 
-.w-2\/12 {
-  width: 16.666667%;
-}
-
-.min-w-80 {
-  min-width: 20rem;
-}
-
 .max-w-screen-xl {
   max-width: 1280px;
 }
@@ -1050,10 +1066,6 @@ video {
 
 .flex-shrink-0 {
   flex-shrink: 0;
-}
-
-.flex-grow {
-  flex-grow: 1;
 }
 
 .border-collapse {
@@ -1385,11 +1397,6 @@ video {
 .bg-blue-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(59 130 246 / var(--tw-bg-opacity));
-}
-
-.bg-blue-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
 }
 
 .bg-gray-100 {
@@ -2030,6 +2037,8 @@ video {
   opacity: 0;
   visibility: hidden;
   animation: fade-in 5s linear;
+  z-index: 9999;
+  /* Asegura que las notificaciones tengan un alto z-index */
 }
 
 .notification__icon {
@@ -2098,6 +2107,21 @@ video {
 
 .apps[data-astro-cid-mo56jcke] {
   transform: translate3d(1160.2px, 64.8px, 50px) !important
+}
+
+#messages-container {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 50;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  margin: 2px;
+}
+
+#inner-messages-container {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 /* Estilo para el borde izquierdo más oscuro en el encabezado de la tabla */
@@ -2740,11 +2764,6 @@ video {
   .dark\:text-white {
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
-  }
-
-  .dark\:text-zinc-300 {
-    --tw-text-opacity: 1;
-    color: rgb(212 212 216 / var(--tw-text-opacity));
   }
 
   .dark\:text-zinc-400 {

@@ -1,5 +1,6 @@
 {% if messages %}
-<div id="messages-container" class="fixed bottom-6 right-6 transform z-50 overflow-hidden">
+<h1>Messages</h1>
+<div id="messages-container" class="fixed top-6 right-6 transform z-50 overflow-hidden">
     <div id="inner-messages-container" class="flex flex-col-reverse">
         {% for message in messages %}
         <div class="rounded-lg m-1 p-1 notification alert-{{ message.tags }} min-w-80" id="alert-{{ forloop.counter }} " role="alert">
@@ -8,7 +9,6 @@
             </div>
             <div class="notification__progress button-{{ message.tags }}"></div>
         </div>
-        
         {% endfor %}
     </div>
 </div>
